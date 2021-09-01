@@ -50,16 +50,20 @@
 // 来源：力扣（LeetCode）
 // 链接：https://leetcode-cn.com/problems/compare-version-numbers
 function compareVersion(version1: string, version2: string) {
+  // 解析为int,移除0开头
   let arr1 = version1.split('.').map(e => parseInt(e, 10))
   let arr2 = version2.split('.').map(e => parseInt(e, 10))
   let change = false
+  // 确保第一个一定为数据更长的
   if (arr1.length < arr2.length) {
     [arr1, arr2] = [arr2, arr1]
     change = true
   }
+  // 短的数组补0
   const tem = new Array(arr1.length - arr2.length).fill(0)
   arr2.push(...tem)
   for (let i = 0; i < arr1.length; i++) {
+    // 从头开始对比,存在大小直接返回结果
     if(arr1[i] > arr2[i]) {
       return !change ? 1 : -1
     }
