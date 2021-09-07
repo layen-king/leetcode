@@ -57,6 +57,7 @@ function mergeTwoLists(l1: ListNode | null, l2: ListNode | null): ListNode | nul
 }
 
 function testMergeTwoLists() {
+  
 }
 
 testMergeTwoLists()
