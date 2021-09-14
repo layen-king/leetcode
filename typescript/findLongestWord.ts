@@ -28,11 +28,11 @@
 // 来源：力扣（LeetCode）
 // 链接：https://leetcode-cn.com/problems/longest-word-in-dictionary-through-deleting
 function findLongestWord(s: string, dictionary: string[]): string {
-  let ans:string[] = []
+  let ans: string[] = []
   for (const s2 of dictionary) {
     if (help(s, s2)) {
-      if(ans.length ===0 || ans[0].length === s2.length) ans.push(s2)
-      if(ans[0].length < s2.length){
+      if (ans.length === 0 || ans[0].length === s2.length) ans.push(s2)
+      if (ans[0].length < s2.length) {
         ans = []
         ans.push(s2)
       }
