@@ -59,8 +59,11 @@ function helper(nums: number[], i: number): number {
 
 
 function testFindPeakElement() {
+  const start = +new Date()
   const result = findPeakElement([1,2,1,3,5,6,4])
   console.log(result)
+  const end = + new Date()
+  console.log('using time:', end-start , 'ms')
 }
 
 testFindPeakElement()
