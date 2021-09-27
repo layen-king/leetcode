@@ -54,7 +54,7 @@
 // 来源：力扣（LeetCode）
 // 链接：https://leetcode-cn.com/problems/decode-ways-ii
 function numDecodings(s: string): number {
-  const MOD = 1000000007
+  const MOD = 1e9 + 7
   let [a, b, res] = [0, 1, 0]
   for (let i = 1; i <= s.length; ++i) {
     res = b * helper1(s[i - 1]) % MOD
