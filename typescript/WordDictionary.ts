@@ -45,3 +45,24 @@ class WordDictionary {
     return this.wordList.some(e => e.length === work.length && r.test(e))
   }
 }
+
+class WordDictionary1 {
+  // 使用map
+  wordList: Map<number, Set<string>> = new Map()
+  constructor() {
+  }
+  addWord(word: string) {
+    if (this.wordList.has(word.length)) {
+      this.wordList.get(word.length).add(word)
+    } else {
+      this.wordList.set(word.length, new Set(word))
+    }
+  }
+  search(word: string) {
+    if (this.wordList.has(word.length)) {
+      const list = Array.from(this.wordList.get(word.length))
+      return list.some(e => new RegExp(word).test(e))
+    }
+    return false
+  }
+}
