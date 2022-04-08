@@ -40,6 +40,11 @@ class INode {
 // 来源：力扣（LeetCode）
 // 链接：https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal
 // 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+/**
+ * bfs广度优先
+ * @param root 
+ * @returns 
+ */
 function levelOrder(root: INode | null): number[][] {
     if (!root) return []
     const ans = []
@@ -59,5 +64,26 @@ function levelOrder(root: INode | null): number[][] {
         // 处理完毕将此队列结果push到结果
         ans.push(levelAns)
     }
+    return ans
+}
+
+/**
+ * dfs深度优先
+ * @param root 
+ * @returns 
+ */
+function levelOrderDfs(root: INode | null): number[][] {
+    if (!root) return []
+    const ans: number[][] = []
+    const dfs = (node = root, lv = 0) => {
+        // 当当前层级没有时,创建一个数组并且赋值
+        if (!ans[lv]) ans[lv] = [node.val]
+        // 存在直接push
+        else ans[lv].push(node.val)
+        for(const el of node.children) {
+            dfs(el, lv + 1)
+        }
+    }
+    dfs()
     return ans
 }
