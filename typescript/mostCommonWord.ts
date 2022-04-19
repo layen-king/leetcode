@@ -39,10 +39,9 @@
 // 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 function mostCommonWord(paragraph: string, banned: string[]): string {
   const map: Record<string, number> = {}
-  const match = paragraph.split(/\W/g)
+  const match = paragraph.match(/\w/g)
   while (match.length) {
     const tem = match.pop().toLocaleLowerCase()
-    if (!tem) continue
     if (map[tem]) map[tem]++
     else map[tem] = 1
   }
