@@ -51,12 +51,11 @@ function binaryGap1(n: number): number {
     const n2 = n.toString(2)
     let [start, res, index] = [-1, 0, 0]
     for (let i = 0; i < n2.length; i++) {
-        if (n2[i] === '1') {
-            if (start !== i) {
-                index++
-                res = Math.max(res, i - start)
-                start = i
-            }
+        if (n2[i] === '1' && start !== i) {
+            index++
+            res = Math.max(res, i - start)
+            start = i
+
         }
     }
     return index <= 1 ? 0 : res
