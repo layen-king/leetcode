@@ -32,21 +32,43 @@
 // 来源：力扣（LeetCode）
 // 链接：https://leetcode-cn.com/problems/random-pick-index
 // 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+/** 哈希表 */
 class Solution {
-    hashMap = new Map<number, number[]>();
-    constructor(nums: number[]) {
-        for (let i = 0; i < nums.length; i++) {
-            const value = this.hashMap.get(nums[i])
-            if (value) {
-                value.push(i)
-            } else {
-                this.hashMap.set(nums[i], [i])
-            }
-        }
+  hashMap = new Map<number, number[]>();
+  constructor(nums: number[]) {
+    for (let i = 0; i < nums.length; i++) {
+      const value = this.hashMap.get(nums[i])
+      if (value) {
+        value.push(i)
+      } else {
+        this.hashMap.set(nums[i], [i])
+      }
     }
+  }
 
-    pick(target: number): number {
-        const values = this.hashMap.get(target)
-        return values[Math.floor(Math.random() * values.length)]
+  pick(target: number): number {
+    const values = this.hashMap.get(target)
+    return values[Math.floor(Math.random() * values.length)]
+  }
+}
+
+/** 抽样 */
+class Solution1 {
+  nums: number[] = []
+  constructor(nums: number[]) {
+    this.nums = nums
+  }
+
+  pick(target: number): number {
+    let [res, count] = [0, 0]
+    for (let i = 0; i < this.nums.length; i++) {
+      if (this.nums[i] === target) {
+        count++
+        if (Math.random() * count >> 0 === 0) {
+          res = i
+        }
+      }
     }
+    return res
+  }
 }
