@@ -42,14 +42,15 @@ function sortArrayByParity1(nums: number[]): number[] {
   let oddLeft = -1
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] % 2 !== 0) {
+      // 记录第一个奇数
       if (oddLeft < 0) oddLeft = i
     } else {
       if (oddLeft >= 0) {
-        // 索引大于奇数区间,替换
+        // 不停的与第一个奇数替换,重新保存替换位置
         const tem = nums[i]
         nums[i] = nums[oddLeft]
         nums[oddLeft] = tem
-        oddLeft++
+        oddLeft = i
       }
     }
   }
