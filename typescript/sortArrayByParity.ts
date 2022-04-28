@@ -50,7 +50,7 @@ function sortArrayByParity1(nums: number[]): number[] {
         const tem = nums[i]
         nums[i] = nums[oddLeft]
         nums[oddLeft] = tem
-        oddLeft = i
+        oddLeft ++
       }
     }
   }
