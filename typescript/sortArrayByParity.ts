@@ -39,11 +39,10 @@ function sortArrayByParity(nums: number[]): number[] {
  * @returns 
  */
 function sortArrayByParity1(nums: number[]): number[] {
-  let [oddLeft, oddRight] = [-1, -1]
+  let oddLeft = -1
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] % 2 !== 0) {
       if (oddLeft < 0) oddLeft = i
-      oddRight = i
     } else {
       if (oddLeft >= 0) {
         // 索引大于奇数区间,替换
@@ -51,7 +50,6 @@ function sortArrayByParity1(nums: number[]): number[] {
         nums[i] = nums[oddLeft]
         nums[oddLeft] = tem
         oddLeft++
-        oddRight++
       }
     }
   }
