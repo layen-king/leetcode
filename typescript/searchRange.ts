@@ -52,6 +52,7 @@ function searchRange(nums: number[], target: number): number[] {
       // 退出逻辑
       has = true
       left = right = mid
+      // 可优化为 继续二分查找
       while (nums[++mid] === target) {
         right = mid
       }
