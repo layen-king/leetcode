@@ -48,7 +48,7 @@ function numSubarrayProductLessThanK1(nums: number[], k: number): number {
     // 向后阶乘
     cur *= nums[i]
     while (j <= i && cur >= k) {
-      // 当结果大于等于目标时, 除以上次乘的数 ,下次遍历还可以继续使用
+      // 当结果大于等于目标时, 除以第一个数 ,下次遍历还可以继续使用
       cur /= nums[j]
       j++
     }
