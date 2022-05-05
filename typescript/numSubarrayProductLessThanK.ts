@@ -46,7 +46,7 @@ function numSubarrayProductLessThanK1(nums: number[], k: number): number {
   let [n, res, cur, j] = [nums.length, 0, 1, 0]
   for (let i = 0; i < n; i++) {
     // 向后阶乘
-    cur *= nums[j]
+    cur *= nums[i]
     while (j <= i && cur >= k) {
       // 当结果大于等于目标时, 除以上次乘的数 ,下次遍历还可以继续使用
       cur /= nums[j]
