@@ -43,17 +43,17 @@ function numSubarrayProductLessThanK(nums: number[], k: number): number {
 }
 function numSubarrayProductLessThanK1(nums: number[], k: number): number {
   // 优化,保存乘结果
-  let [n, res, cur, i] = [nums.length, 0, 1, 0]
-  for (let j = 0; j < n; j++) {
+  let [n, res, cur, j] = [nums.length, 0, 1, 0]
+  for (let i = 0; i < n; i++) {
     // 向后阶乘
     cur *= nums[j]
-    while (i <= j && cur >= k) {
+    while (j <= i && cur >= k) {
       // 当结果大于等于目标时, 除以上次乘的数 ,下次遍历还可以继续使用
-      cur /= nums[i]
-      i++
+      cur /= nums[j]
+      j++
     }
     // 加上符合条件的结果
-    res += j - i + 1
+    res += i - j + 1
   }
   return res
 }
