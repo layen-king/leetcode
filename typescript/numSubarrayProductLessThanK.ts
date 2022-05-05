@@ -28,12 +28,27 @@
 // 链接：https://leetcode-cn.com/problems/subarray-product-less-than-k
 // 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 function numSubarrayProductLessThanK(nums: number[], k: number): number {
+  // 无优化
+  let res = 0
+  const n = nums.length
+  for (let i = 0; i < n; i++) {
+    let cur = nums[i]
+    let j = i
+    while (cur < k && j < n) {
+      res++
+      cur *= nums[++j]
+    }
+  }
+  return res
+}
+function numSubarrayProductLessThanK1(nums: number[], k: number): number {
+  // 优化,保存乘结果
   let [n, res, cur, i] = [nums.length, 0, 1, 0]
   for (let j = 0; j < n; j++) {
     // 向后阶乘
     cur *= nums[j]
     while (i <= j && cur >= k) {
-      // 当结果大于等于目标时, 除以上次乘的数 
+      // 当结果大于等于目标时, 除以上次乘的数 ,下次遍历还可以继续使用
       cur /= nums[i]
       i++
     }
