@@ -31,19 +31,31 @@ function oneEditAway(first: string, second: string): boolean {
   const [m, n] = [first.length, second.length]
   // 当长度差异大于1,肯定不能通过一次编辑
   if (m - n > 1) return false
+  // 使用双指针
   let [i, j, step] = [0, 0, 0]
   // 遍历长的那个
-  for (; i < m; i++) {
-    // 若2个字符串长度相等,指针同步
-    j = m === n ? i : i - step
+  // for (; i < m; i++) {
+  //   // 若2个字符串长度相等,指针同步, 不相等时, 短指针重新计算
+  //   j = m === n ? i : i - step
+  //   if (first[i] !== second[j]) {
+  //     step += 1
+  //   }
+  //   if (step > 1) {
+  //     // 此时有2处不相等,返回false
+  //     return false
+  //   }
+  // 使用while
+  while (i < m) {
     if (first[i] !== second[j]) {
-      // 当2个字符串不等于时,step+1,同时跳过当前字符
+      if (m > n) j--
+      // 当m > n时, j减去1
       step += 1
     }
     if (step > 1) {
-      // 此时有2处不相等,返回false
       return false
     }
+    i++
+    j++
   }
   return true
 }
