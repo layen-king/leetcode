@@ -30,7 +30,7 @@ class TreeNode1 {
     this.right = (right === undefined ? null : right)
   }
 }
-// 广度优先
+// 广度优先 bfs
 function findBottomLeftValue(root: TreeNode1 | null) {
   let res = 0
   const queue = [root]
@@ -44,5 +44,23 @@ function findBottomLeftValue(root: TreeNode1 | null) {
     }
     res = tem.val
   }
+  return res
+}
+
+// 深度优先 dfs
+function findBottomLeftValue1(root: TreeNode1 | null) {
+  let res = 0
+  let max = 0
+  function dfs(node: TreeNode1, height: number) {
+    if (!node) return
+    if (height > max) {
+      max = height
+      res = node.val
+    }
+    height++
+    dfs(node.left, height)
+    dfs(node.right, height)
+  }
+  dfs(root, 0)
   return res
 }
