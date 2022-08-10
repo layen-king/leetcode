@@ -40,7 +40,7 @@ function solveEquation(equation: string): string {
   const q1 = help(left)
   const q2 = help(right)
   const t = [q1[0] - q2[0], q2[1] - q1[1]]
-  console.log(t)
+  return `x=${t[1] / t[0]}`
 }
 
 function help(str: string) {
